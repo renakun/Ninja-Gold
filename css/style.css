@@ -1,0 +1,94 @@
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+}
+
+.top {
+  padding: 2em 0 2em;
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.reset {
+  vertical-align: middle;
+  padding: 1em;
+  background: #ddd;
+  text-align: center;
+  font-weight: bold;
+}
+
+.clicked {
+  vertical-align: middle;
+  padding: 1em;
+  background: #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.attempt {
+  padding: 1em;
+  text-align: left;
+  font-weight: bold;
+}
+
+.total {
+  padding: 1em;
+  text-align: left;
+  font-weight: bold;
+}
+
+.location {
+  padding: 4em 2em 2em;
+}
+
+.block {
+  padding: 3em;
+  background: #000;
+}
+
+.block form input[type="submit"] {
+  background: #fff;
+  padding: .3em;
+  color: #000;
+  font-size: 2em;
+  font-weight: 600;
+  display: block;
+  outline: none;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.ninja_path {
+  padding: 2em 0 2em;
+}
+
+.ninja {
+
+}
+
+.ninja_path img {
+  height: 100px;
+}
+
+.log {
+  padding: 1em 0;
+}
+
+.log ul li a{
+  color: #000;
+  font-weight: bold;
+}
+
+.log ul li.active a {
+  background: #fff601;
+  color: #000;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 0 2em 0;
+}
