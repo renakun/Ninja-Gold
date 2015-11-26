@@ -1,0 +1,168 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script type="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <script>
+  $(document).ready(function ()
+  {
+    $("#house").click(function ()
+    {
+        $('img.ninja').animate({left: '15%'});
+    });
+
+
+    $("#cave").click(function ()
+    {
+        $('img.ninja').animate({left: '35%'});
+    });
+
+    $("#goldmine").click(function ()
+    {
+        $('img.ninja').animate({left: '57%'});
+    });
+
+    $("#casino").click(function ()
+    {
+        $('img.ninja').animate({left: '78%'});
+    });
+  });
+  </script>
+</head>
+
+<body>
+  <div class="container" id="game_page">
+    <div class="top">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+              <button class="reset" onclick="$(this).addClass('clicked');">Reset</button>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="attempt">
+            Attempt: 20
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <div class="total">
+            Total: 0
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+
+    <div class="location">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="block">
+            <button id="house" style ="background: #fff;
+            padding: .3em;
+            color: #000;
+            font-size: 2em;
+            font-weight: 600;
+            display: block;
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            text-transform: uppercase;"> HOUSE </button>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="block">
+            <button id="cave" style ="background: #fff;
+            padding: .3em;
+            color: #000;
+            font-size: 2em;
+            font-weight: 600;
+            display: block;
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            text-transform: uppercase;"> CAVE </button>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="block">
+            <button id="goldmine" style ="background: #fff;
+            padding: .3em;
+            color: #000;
+            font-size: 2em;
+            font-weight: 600;
+            display: block;
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            text-transform: uppercase;"> GOLDMINE </button>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="block">
+            <button id="casino" style ="background: #fff;
+            padding: .3em;
+            color: #000;
+            font-size: 2em;
+            font-weight: 600;
+            display: block;
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            text-transform: uppercase;"> CASINO </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ninja_path">
+      <div>
+        <img class = "ninja" src="img/minion-ninja.jpg" style="position: absolute; left : 10% ; top :40%">
+      </div>
+    </div>
+
+    <div class="log">
+      <div>
+        <ul class="nav nav-tabs nav-justified">
+          <li class="active">
+            <a data-toggle="tab" href="#all">ALL</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#gain">GAINS</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#loss">LOSSES</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="all" class="tab-pane fade in active">
+            <h3>Gain</h3>
+            <p>Some content.</p>
+            <h3>Loss</h3>
+            <p>Some content.</p>
+          </div>
+          <div id="gain" class="tab-pane fade">
+            <h3>Gain</h3>
+            <p>Some content.</p>
+          </div>
+          <div id="loss" class="tab-pane fade">
+            <h3>Loss</h3>
+            <p>Some content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
