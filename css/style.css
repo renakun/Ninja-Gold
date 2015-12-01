@@ -3,13 +3,14 @@ body{
   font-size: 14px;
   line-height: 1.5;
   color: #333;
-  background-color: #fff;
+  background-image: url("BG3.png");
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 #game_page {
   margin-top: 3em;
   padding: 1em;
-  border: 2px solid black;
 }
 
 .top {
@@ -39,7 +40,7 @@ body{
   font-weight: bold;
 }
 
-.total {
+.score {
   padding: 1em;
   text-align: left;
   font-weight: bold;
@@ -51,7 +52,7 @@ body{
 
 .block {
   padding: 3em;
-  background: #000;
+  
 }
 
 .block form input[type="submit"] {
@@ -86,7 +87,7 @@ body{
 
 .ninja_path {
   padding: 2em 0 2em;
-  height: 120px;
+  height: 220px;
 }
 
 .ninja {
@@ -94,7 +95,7 @@ body{
 }
 
 .ninja_path img {
-  height: 100px;
+  height: 210px;
 }
 
 .log {
@@ -114,4 +115,14 @@ body{
 
 .tab-content {
   padding: 0 2em 0;
+}
+
+.tab-pane{
+  height:300px;
+  overflow-y:scroll;
+  width:100%;
+}
+
+.form-group {
+  margin-bottom: 0;
 }

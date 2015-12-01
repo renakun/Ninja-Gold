@@ -9,50 +9,209 @@
   <script src="js/bootstrap.min.js"></script>
 
   <script>
+  var data = {
+    attempts : 20,
+    score : 0,
+    events: []
+  };
+
   $(document).ready(function ()
   {
-    $("#house").click(function ()
-    {
-        $('img.ninja').animate({left: '15%'});
-    });
-
+    $('#score').attr("disabled","disabled")
+    $('#attempts').attr("disabled","disabled")
+    $("#attempts").val(data.attempts).css({ "color": "green", "font-size":"15px", "font-weight":"700" });
+    $("#score").val(data.score).css({ "color": "green", "font-size":"15px", "font-weight":"700" });
+    var x = 0;
+    var gold = 0;
+    var totalatt;
 
     $("#cave").click(function ()
     {
-        $('img.ninja').animate({left: '35%'});
+        $('img.ninja').animate({left: '10%'});
+        cave()
+        x= x+1;
+        $("#attempts").val(data.attempts-x);
+        totalatt = data.attempts-x;
+        validate(totalatt, gold)
+    });
+
+
+    $("#house").click(function ()
+    {
+        $('img.ninja').animate({left: '30%'});
+        house()
+        x= x+1;
+        $("#attempts").val(data.attempts-x);
+        totalatt = data.attempts-x;
+        validate(totalatt, gold)
     });
 
     $("#goldmine").click(function ()
     {
-        $('img.ninja').animate({left: '57%'});
+        $('img.ninja').animate({left: '51%'});
+        goldmine()
+        x= x+1;
+        $("#attempts").val(data.attempts-x);
+        totalatt = data.attempts-x;
+        validate(totalatt, gold)
     });
 
     $("#casino").click(function ()
     {
-        $('img.ninja').animate({left: '78%'});
+        $('img.ninja').animate({left: '72%'});
+        casino()
+        x= x+1;
+        $("#attempts").val(data.attempts-x);
+        totalatt = data.attempts-x;
+        validate(totalatt, gold)
     });
+
+    function cave (){
+      gold = gold + 5;
+      $("#score").val(data.score+gold).css({ "color": "green"});
+      var event = {
+        location: 'Cave',
+        time: Date(),
+        amount: 5
+      }
+      data.events.push(event)
+      var arr = [
+        '<p style = "color : green"> Ninja went to ', event.location, ' and got ', event.amount, ' .The time was ', event.time
+      ]
+
+      $("#all").append(arr.join(''));
+      $("#gains").append(arr.join(''))
+    }
+
+    function house (){
+      var random = Math.floor(Math.random()*10+1);
+      var event = {
+        location: 'House',
+        time: Date(),
+        amount: 10
+      }
+      if(random >= 9)
+      {
+        gold = gold + 0;
+        $("#score").val(data.score+gold).css({ "color": "black"});
+        data.events.push(event)
+        var arr = [
+          '<p style = "color : black"> Ninja went to ', event.location, ' and got 0', ' .The time was ', event.time
+        ]
+        $("#all").append(arr.join(''));
+        console.log(random)
+      }
+      else {
+        gold = gold + 10;
+        $("#score").val(data.score+gold).css({ "color": "green"});
+        data.events.push(event)
+        var arr = [
+          '<p style = "color : green"> Ninja went to ', event.location, ' and got ', event.amount, ' .The time was ', event.time
+        ]
+        $("#all").append(arr.join(''));
+        $("#gains").append(arr.join(''));
+      }
+    }
+
+    function goldmine (){
+      var random =  Math.floor(Math.random()*10+1);
+      var random1 = Math.floor(Math.random()*25+1);
+      var event = {
+        location: 'Goldmine',
+        time: Date(),
+        amount: random1
+      }
+      if(random >= 9 )
+      {
+        gold = gold + 0;
+        $("#score").val(data.score+gold).css({ "color": "black"});
+        data.events.push(event)
+        var arr = [
+          '<p style = "color : black"> Ninja went to ', event.location, ' and got 0', ' .The time was ', event.time
+        ]
+        $("#all").append(arr.join(''));
+        console.log(random)
+      }
+      else {
+        gold = gold + random1;
+        $("#score").val(data.score+gold).css({ "color": "green"});
+        data.events.push(event)
+        var arr = [
+          '<p style = "color : green"> Ninja went to ', event.location, ' and got  ', event.amount, ' .The time was ', event.time
+        ]
+        $("#all").append(arr.join(''));
+        $("#gains").append(arr.join(''));
+      }
+    }
+
+    function casino (){
+      var random =  Math.floor(Math.random()*10+1);
+      var random1 = Math.floor(Math.random()*(50-20)+20);
+      var event = {
+        location: 'Casino',
+        time: Date(),
+        amount: random1
+      }
+      if(random >= 6)
+      {
+        $("#score").val(gold-random1).css({ "color": "red"});
+
+        data.events.push(event)
+        var arr = [
+          '<p style = "color : red"> Ninja went to ', event.location, ' and lost ', event.amount, ' .The time was ', event.time
+        ]
+        $("#all").append(arr.join(''));
+        $("#loss").append(arr.join(''));
+      }
+      else {
+        gold = gold + random1;
+        $("#score").val(data.score+gold).css({ "color": "green"});
+        data.events.push(event)
+        var arr = [
+          '<p style = "color : green"> Ninja went to ', event.location, ' and got ', event.amount, ' .The time was ', event.time
+        ]
+        $("#all").append(arr.join(''));
+        $("#gains").append(arr.join(''));
+      }
+    }
+
+   function validate (a,b){
+     if((a == 0) && (b >= 250)){
+       alert("Congratulations! You Win!");
+       $( ".location button" ).attr( "disabled", "disabled").css( "background-color", "#fff" );
+     }
+     if(a ==0){
+       alert("Sorry. You lose .");
+       $( ".location button" ).attr( "disabled", "disabled").css( "background-color", "#fff" );
+     }
+     if(b >= 250){
+       alert("Congratulations! :) You Win!!");
+       $( ".location button" ).attr( "disabled", "disabled").css( "background-color", "#fff" );
+     }
+   }
+
   });
   </script>
 </head>
 
 <body>
-  <div class="container" id="game_page">
+  <div class="container" id="game_page" >
     <div class="top">
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-2">
-              <button class="reset" onclick="$(this).addClass('clicked');">Reset</button>
+              <button class="reset">Reset</button>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2">
-          <div class="attempt">
-            Attempt: 20
+          <div class="form-group">
+            <label for="attempts">ATTEMPT:</label><input type="attempts" class="form-control" id="attempts">
           </div>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2">
-          <div class="total">
-            Total: 0
+          <div class="form-group">
+            <label for="score">SCORE:</label><input type="score" class="form-control" id="score">
           </div>
         </div>
         <div class="col-md-1"></div>
@@ -63,22 +222,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="block">
-            <button id="house" style ="background: #fff;
-            padding: .3em;
-            color: #000;
-            font-size: 2em;
-            font-weight: 600;
-            display: block;
-            outline: none;
-            border: none;
-            width: 100%;
-            border-radius: 5px;
-            text-transform: uppercase;"> HOUSE </button>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="block">
-            <button id="cave" style ="background: #fff;
+            <button id="cave" style ="background: #fff601;
             padding: .3em;
             color: #000;
             font-size: 2em;
@@ -93,7 +237,22 @@
         </div>
         <div class="col-md-3">
           <div class="block">
-            <button id="goldmine" style ="background: #fff;
+            <button id="house" style ="background: #fff601;
+            padding: .3em;
+            color: #000;
+            font-size: 2em;
+            font-weight: 600;
+            display: block;
+            outline: none;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            text-transform: uppercase;"> HOUSE </button>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="block">
+            <button id="goldmine" style ="background: #fff601;
             padding: .3em;
             color: #000;
             font-size: 2em;
@@ -108,7 +267,7 @@
         </div>
         <div class="col-md-3">
           <div class="block">
-            <button id="casino" style ="background: #fff;
+            <button id="casino" style ="background: #fff601;
             padding: .3em;
             color: #000;
             font-size: 2em;
@@ -126,38 +285,33 @@
 
     <div class="ninja_path">
       <div>
-        <img class = "ninja" src="img/minion-ninja.jpg" style="position: absolute; left : 10% ; top :40%">
+        <img class = "ninja" src="img/minion-ninja.png" style="position: absolute; left : 5% ; top :39%">
       </div>
     </div>
 
-    <div class="log">
+    <div class="log" >
       <div>
         <ul class="nav nav-tabs nav-justified">
           <li class="active">
-            <a data-toggle="tab" href="#all">ALL</a>
+            <a data-toggle="tab" href="#All">ALL</a>
           </li>
           <li>
-            <a data-toggle="tab" href="#gain">GAINS</a>
+            <a data-toggle="tab" href="#Gain">GAINS</a>
           </li>
           <li>
-            <a data-toggle="tab" href="#loss">LOSSES</a>
+            <a data-toggle="tab" href="#Loss">LOSSES</a>
           </li>
         </ul>
 
         <div class="tab-content">
-          <div id="all" class="tab-pane fade in active">
-            <h3>Gain</h3>
-            <p>Some content.</p>
-            <h3>Loss</h3>
-            <p>Some content.</p>
+          <div id="All" class="tab-pane fade in active">
+            <p id ="all"></p>
           </div>
-          <div id="gain" class="tab-pane fade">
-            <h3>Gain</h3>
-            <p>Some content.</p>
+          <div id="Gain" class="tab-pane fade">
+            <p id ="gains"></p>
           </div>
-          <div id="loss" class="tab-pane fade">
-            <h3>Loss</h3>
-            <p>Some content.</p>
+          <div id="Loss" class="tab-pane fade">
+            <p id ="loss"></p>
           </div>
         </div>
       </div>
